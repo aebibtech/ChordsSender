@@ -7,10 +7,30 @@
     <Nullable>enable</Nullable>
     <StartupObject>ChordsSender.Program</StartupObject>
     <ApplicationIcon>guitar.ico</ApplicationIcon>
+    <Company>Aebibtech</Company>
+    <Authors>Paul Abib Camano</Authors>
+    <Description>Sends PDF file to Facebook Chat automagically.</Description>
+    <Copyright>(c) Aebibtech</Copyright>
+    <RepositoryUrl>https://github.com/aebibtech/ChordsSender</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/aebibtech/ChordsSender</PackageProjectUrl>
+    <PackageIcon>icons8-guitar-96.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="guitar.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="D:\paulcamano\Downloads\icons8-guitar-color\icons8-guitar-96.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
