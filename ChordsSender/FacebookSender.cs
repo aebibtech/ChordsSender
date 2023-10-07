@@ -32,7 +32,7 @@ namespace ChordsSender
             ConsoleHelper.ShowMessage("Internet is good! Proceeding...");
 
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            var googleChrome = "Google\\Chrome\\Application\\chrome.exe";
+            var googleChrome = @"Google\Chrome\Application\chrome.exe";
             var userDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), @"ChordsSenderProfile");
             Console.WriteLine($"Using Chrome from {Path.Combine(programFiles, googleChrome)}");
             IBrowser browser = await Puppeteer.LaunchAsync(new LaunchOptions()
@@ -40,8 +40,7 @@ namespace ChordsSender
                 Headless = true,
                 ExecutablePath = Path.Combine(programFiles, googleChrome),
                 UserDataDir = userDataDir
-            }); ;
-
+            });
             try
             {
                 var gcPage = await browser.NewPageAsync();
