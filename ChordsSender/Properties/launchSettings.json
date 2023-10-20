@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ChordsSender": {
+      "commandName": "Project",
+      "commandLineArgs": "t"
+    }
+  }
+}
