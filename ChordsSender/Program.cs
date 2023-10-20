@@ -6,6 +6,7 @@ using System.Diagnostics;
 using PuppeteerSharp;
 using System.Net.NetworkInformation;
 using PuppeteerSharp.Input;
+using static ChordsSender.ConsoleHelper;
 
 namespace ChordsSender
 {
@@ -14,7 +15,7 @@ namespace ChordsSender
         public static AppSettings? Settings { get; set; }
         static void Main(string[] args)
         {
-            ConsoleHelper.ShowMessage();
+            ShowMessage();
 
             var userProfilePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var fileName = "chordssheetsender.json";
@@ -24,42 +25,59 @@ namespace ChordsSender
             {
                 var file = File.ReadAllText(settingsFilePath);
                 Settings = JsonConvert.DeserializeObject<AppSettings>(file);
+                if(args.Length > 0)
+                {
+                    if (args[0] == "t")
+                    {
+                        Settings.ThreadID = "aebib";
+                    }
+                }
             }
             else
             {
                 string chordsPath = "";
-                while (string.IsNullOrEmpty(chordsPath))
+                while (string.IsNullOrEmpty(chordsPath) || !Directory.Exists(chordsPath))
                 {
-                    ConsoleHelper.ShowMessage("Chords Path:");
+                    ShowMessage("Chords Path:");
                     chordsPath = Console.ReadLine();
-                    if (Directory.Exists(chordsPath))
+                    if (!Directory.Exists(chordsPath))
                     {
-                        break;
-                    }
-                    else
-                    {
-                        ConsoleHelper.ShowMessage("Invalid directory. Where is your chords directory?");
-                        continue;
+                        ShowError($"Chords Path:\n{chordsPath} is an invalid path");
                     }
                 }
+
                 string fbUsername = "";
                 while (string.IsNullOrEmpty(fbUsername))
                 {
-                    Console.WriteLine("FB Username:");
+                    ShowMessage("FB Username:");
                     fbUsername = Console.ReadLine();
+                    if (string.IsNullOrEmpty(fbUsername)){
+                        ShowError("FB Username:\nWe need your FB username");
+                    }
                 }
+
                 string fbPassword = "";
                 while (string.IsNullOrEmpty(fbPassword))
                 {
-                    Console.WriteLine("FB Password:");
+                    ShowMessage("FB Password:");
                     fbPassword = Console.ReadLine();
+                    if (string.IsNullOrEmpty(fbPassword))
+                    {
+                        ShowError("FB Password:\nWe need your FB password");
+                    }
                 }
+
                 string threadId = "";
                 while (string.IsNullOrEmpty(threadId))
                 {
-                    Console.WriteLine("GC Thread ID:");
+                    ShowMessage("GC Thread ID:");
                     threadId = Console.ReadLine();
+                    if (string.IsNullOrEmpty(threadId))
+                    {
+                        ShowError("GC Thread ID:\nWe need your group chat's thread ID");
+                    }
                 }
+
                 Settings = new AppSettings() { PDfPath = chordsPath, FBUsername = fbUsername, FBPassword = fbPassword, ThreadID = threadId };
                 var settingsJson = JsonConvert.SerializeObject(Settings);
                 File.WriteAllText(settingsFilePath, settingsJson);

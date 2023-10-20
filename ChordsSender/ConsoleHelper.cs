@@ -15,5 +15,10 @@ namespace ChordsSender
             Console.WriteLine($"(c) {DateTime.Now.Year} Aebibtech\n");
             Console.WriteLine(message);
         }
+        public static void ShowError(string message)
+        {
+            ShowMessage(message);
+            Task.Delay(1000).Wait();
+        }
     }
 }
