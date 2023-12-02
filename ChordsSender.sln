@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChordsSender", "ChordsSender\ChordsSender.csproj", "{6700192A-6909-4F89-A74A-270ED47A9C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChordsSender.Tests", "ChordsSender.Tests\ChordsSender.Tests.csproj", "{07BD54B6-2B63-4982-BD18-F704F5DDA3C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChordsSender.Tests", "ChordsSender.Tests\ChordsSender.Tests.csproj", "{07BD54B6-2B63-4982-BD18-F704F5DDA3C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
