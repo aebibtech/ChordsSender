@@ -1,6 +1,6 @@
 ﻿@echo off
-dotnet publish -r win-x64 /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:PublishTrimmed=true --output .
+dotnet publish -r win-x64 /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:PublishTrimmed=true --output ./manual-compile
 cls
-ChordsSender t
+./manual-compile/ChordsSender.exe t
 echo Done
 pause
