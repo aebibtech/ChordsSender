@@ -1,10 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Net;
-using System.Security.Permissions;
-using System.Diagnostics;
-using PuppeteerSharp;
-using System.Net.NetworkInformation;
-using PuppeteerSharp.Input;
 using static ChordsSender.ConsoleHelper;
 
 namespace ChordsSender
