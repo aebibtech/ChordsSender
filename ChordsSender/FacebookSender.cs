@@ -38,7 +38,7 @@ namespace ChordsSender
             Console.WriteLine($"Using Chrome from {Path.Combine(programFiles, googleChrome)}");
             IBrowser browser = await Puppeteer.LaunchAsync(new LaunchOptions()
             {
-                Headless = true,
+                Headless = false,
                 ExecutablePath = Path.Combine(programFiles, googleChrome),
                 UserDataDir = userDataDir,
                 Timeout = 0
@@ -81,7 +81,8 @@ namespace ChordsSender
 
                 var greeting = new Greeter().GetGreeting(hour: DateTime.Now.Hour);
                 ShowMessage($"Typing greeting '{greeting}'");
-                var messageBox = await gcPage.WaitForXPathAsync("/html/body/div[1]/div/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div[2]/div/div/div[4]/div[2]/div/div[1]/div[1]");
+                //var messageBox = await gcPage.WaitForXPathAsync("/html/body/div[1]/div/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div[2]/div/div/div[4]/div[2]/div/div[1]/div[1]");
+                var messageBox = await gcPage.WaitForXPathAsync("/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[2]/div/div/div/div[2]/div/div/div[4]/div[2]/div/div[1]/div[1]");
                 await messageBox.TypeAsync(greeting, delayedPress);
 
                 ShowMessage("Sending chords to GC...");
